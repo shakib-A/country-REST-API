@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
 import Card from './Card'
 import { myContext } from './context/myContext'
 const AllCountries = () => {
@@ -13,16 +14,17 @@ const AllCountries = () => {
   })
 
   return (
-    <div className='p-4 md:px-20 grid grid-cols-1 justify-items-center gap-10 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4'>
+    <div className='p-4 md:px-20 grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4'>
         {filteredData?.map((country, index) => {
-          return <Card 
-          key={index}
-          imgAddress={country.flags.svg}
-          name={country.name.common}
-          population={country.population}
-          region={country.region}
-          capital={country.capital}
+          return <Link key={index} to={`/country/${country.name.common}`}>
+          <Card 
+            imgAddress={country.flags.svg}
+            name={country.name.common}
+            population={country.population}
+            region={country.region}
+            capital={country.capital}
           />
+          </Link>
         })}
     </div>
   )
