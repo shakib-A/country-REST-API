@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, Fragment } from 'react'
+import React, { useContext, Fragment } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import Form from './components/Form'

@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { FaArrowLeftLong } from "react-icons/fa6";
 import { useNavigate, Link } from 'react-router-dom'
 import {countryCode} from '../contries'
 
@@ -7,16 +8,24 @@ const CountryDisplay = ({ selectedCountry }) => {
     const { flags:{svg}, name:{common}, population, region, subregion, capital, tld, currencies, languages, borders } = selectedCountry
     const navigate = useNavigate()
 
+    const currenciesNames = Object.values(currencies).map((currency) => {
+      return currency.name
+    }).join(', ')
+    const languagesNames = Object.values(languages).map((language) => {
+      return language
+    }).join(', ')
+  
+
   return (
     <>
-      <button onClick={() => navigate('/')} className='self-start drop-shadow-xl bg-White(DarkModeText&LightModeElements) dark:bg-DarkBlue(DarkModeElements) px-6 py-1 rounded-sm'>go back</button>
+      <button onClick={() => navigate('/')} className='self-start drop-shadow-xl bg-White(DarkModeText&LightModeElements) dark:bg-DarkBlue(DarkModeElements) px-6 py-1 rounded-sm flex justify-center items-center gap-2'><FaArrowLeftLong />go back</button>
       <div className='flex flex-col lg:flex-row self-center lg:self-auto justify-start items-start lg:items-center gap-20 max-w-96 lg:max-w-none lg:w-full'>
           <img src={svg} className='h-[300px] w-full lg:max-w-[500px]' />
           <div className='flex flex-col gap-8 flex-1'>
             <div className='flex flex-col lg:flex-row gap-4 lg:gap-20 lg:justify-start'>
               <div className='flex flex-col gap-2'>
                 <h1 className='font-bold text-xl my-4'>{common}</h1>
-                <span><strong>Population:</strong> {population}</span>
+                <span><strong>Population:</strong> {population.toLocaleString()}</span>
                 <span><strong>Region:</strong> {region}</span>
                 <span><strong>Sub Region:</strong> {subregion}</span>
                 <span><strong>Captial:</strong> {capital[0]}</span>
@@ -24,8 +33,8 @@ const CountryDisplay = ({ selectedCountry }) => {
 
               <div className='flex flex-col gap-2 lg:my-4'>
                 <span><strong>Top Level Domain:</strong> {tld[0]}</span>
-                <span><strong>Curencies:</strong> {}</span>
-                <span><strong>Languages:</strong> {}</span>
+                <span><strong>Curencies:</strong> {currenciesNames}</span>
+                <span><strong>Languages:</strong> {languagesNames}</span>
               </div>
             </div>
     
