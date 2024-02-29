@@ -656,7 +656,7 @@ export const countryCode =[
     },
     {
         "code": "MKD",
-        "name": "Macedonia, the former Yugoslav Republic of",
+        "name": "North Macedonia",
         
     },
     {
@@ -1188,6 +1188,10 @@ export const countryCode =[
         "code": "URY",
         "name": "Uruguay",
         
+    },
+    {
+        "code": "UNK",
+        "name": "Unknown"
     },
     {
         "code": "UZB",
